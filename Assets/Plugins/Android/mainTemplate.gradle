@@ -8,10 +8,13 @@
             url "https://maven.google.com"
         }
         maven {
-            url "https://maven.google.com/" // Assets/GoogleMobileAds/Editor/GoogleMobileAdsDependencies.xml:7, Assets/IronSource/Editor/IronSourceSDKDependencies.xml:17, Assets/IronSource/Editor/IronSourceSDKDependencies.xml:25, Assets/IronSource/Editor/ISAdMobAdapterDependencies.xml:8
+            url "https://maven.google.com/" // Assets/GoogleMobileAds/Editor/GoogleMobileAdsDependencies.xml:7, Assets/IronSource/Editor/IronSourceSDKDependencies.xml:17, Assets/IronSource/Editor/IronSourceSDKDependencies.xml:25, Assets/IronSource/Editor/ISAdColonyAdapterDependencies.xml:8, Assets/IronSource/Editor/ISAdMobAdapterDependencies.xml:8, Assets/IronSource/Editor/ISFacebookAdapterDependencies.xml:8, Assets/IronSource/Editor/ISMyTargetAdapterDependencies.xml:15, Assets/IronSource/Editor/ISMyTargetAdapterDependencies.xml:22, Assets/IronSource/Editor/ISMyTargetAdapterDependencies.xml:29, Assets/IronSource/Editor/ISUnityAdsAdapterDependencies.xml:15
         }
         maven {
-            url "https://android-sdk.is.com/" // Assets/IronSource/Editor/IronSourceSDKDependencies.xml:9, Assets/IronSource/Editor/ISAdMobAdapterDependencies.xml:16
+            url "https://android-sdk.is.com/" // Assets/IronSource/Editor/IronSourceSDKDependencies.xml:9, Assets/IronSource/Editor/ISAdColonyAdapterDependencies.xml:16, Assets/IronSource/Editor/ISAdMobAdapterDependencies.xml:16, Assets/IronSource/Editor/ISFacebookAdapterDependencies.xml:16, Assets/IronSource/Editor/ISMyTargetAdapterDependencies.xml:8, Assets/IronSource/Editor/ISUnityAdsAdapterDependencies.xml:8, Assets/IronSource/Editor/ISVungleAdapterDependencies.xml:16
+        }
+        maven {
+            url "https://jitpack.io/" // Assets/IronSource/Editor/ISVungleAdapterDependencies.xml:8
         }
         mavenLocal()
         jcenter()
@@ -25,12 +28,24 @@ apply plugin: 'com.android.library'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 // Android Resolver Dependencies Start
+    implementation 'com.adcolony:sdk:4.5.0' // Assets/IronSource/Editor/ISAdColonyAdapterDependencies.xml:8
+    implementation 'com.facebook.android:audience-network-sdk:6.5.0' // Assets/IronSource/Editor/ISFacebookAdapterDependencies.xml:8
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.11.1' // Assets/IronSource/Editor/ISMyTargetAdapterDependencies.xml:22
+    implementation 'com.google.android.exoplayer:exoplayer-hls:2.11.1' // Assets/IronSource/Editor/ISMyTargetAdapterDependencies.xml:29
     implementation 'com.google.android.gms:play-services-ads:20.0.0' // Assets/GoogleMobileAds/Editor/GoogleMobileAdsDependencies.xml:7
     implementation 'com.google.android.gms:play-services-ads:20.1.0' // Assets/IronSource/Editor/ISAdMobAdapterDependencies.xml:8
     implementation 'com.google.android.gms:play-services-ads-identifier:17.0.0' // Assets/IronSource/Editor/IronSourceSDKDependencies.xml:17
     implementation 'com.google.android.gms:play-services-basement:17.2.1' // Assets/IronSource/Editor/IronSourceSDKDependencies.xml:25
+    implementation 'com.ironsource.adapters:adcolonyadapter:4.3.8' // Assets/IronSource/Editor/ISAdColonyAdapterDependencies.xml:16
     implementation 'com.ironsource.adapters:admobadapter:4.3.20' // Assets/IronSource/Editor/ISAdMobAdapterDependencies.xml:16
+    implementation 'com.ironsource.adapters:facebookadapter:4.3.27' // Assets/IronSource/Editor/ISFacebookAdapterDependencies.xml:16
+    implementation 'com.ironsource.adapters:mytargetadapter:4.1.8' // Assets/IronSource/Editor/ISMyTargetAdapterDependencies.xml:8
+    implementation 'com.ironsource.adapters:unityadsadapter:4.3.11' // Assets/IronSource/Editor/ISUnityAdsAdapterDependencies.xml:8
+    implementation 'com.ironsource.adapters:vungleadapter:4.3.8' // Assets/IronSource/Editor/ISVungleAdapterDependencies.xml:16
     implementation 'com.ironsource.sdk:mediationsdk:7.1.6.1' // Assets/IronSource/Editor/IronSourceSDKDependencies.xml:9
+    implementation 'com.my.target:mytarget-sdk:5.12.3' // Assets/IronSource/Editor/ISMyTargetAdapterDependencies.xml:15
+    implementation 'com.unity3d.ads:unity-ads:3.7.2' // Assets/IronSource/Editor/ISUnityAdsAdapterDependencies.xml:15
+    implementation 'com.vungle:publisher-sdk-android:6.9.1' // Assets/IronSource/Editor/ISVungleAdapterDependencies.xml:8
 // Android Resolver Dependencies End
 **DEPS**}
 
@@ -64,6 +79,7 @@ android {
         versionCode **VERSIONCODE**
         versionName '**VERSIONNAME**'
         consumerProguardFiles 'proguard-unity.txt'**USER_PROGUARD**
+		multiDexEnabled true
     }
 
     lintOptions {
