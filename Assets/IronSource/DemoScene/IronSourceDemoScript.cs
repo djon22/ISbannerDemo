@@ -38,8 +38,8 @@ public class IronSourceDemoScript : MonoBehaviour
 
         // SDK init
         Debug.Log("unity-script: IronSource.Agent.init");
-       // IronSource.Agent.init(appKey);
-        IronSource.Agent.init (appKey, IronSourceAdUnits.BANNER);
+        IronSource.Agent.init(appKey);
+        //IronSource.Agent.init (appKey, IronSourceAdUnits.BANNER);
 
     }
 
